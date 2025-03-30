@@ -1,0 +1,775 @@
+/* 運動宇宙風格 - 美式運動酒吧主題 */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Teko:wght@400;600;700&family=Russo+One&family=Orbitron:wght@400;500;700;900&family=Exo:wght@300;400;700;900&family=Quantico:wght@400;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/jf-openhuninn@1.1.0/dist/jf-openhuninn.min.css');
+
+:root {
+  --neon-blue: #00f7ff;
+  --neon-red: #ff003c;
+  --neon-orange: #ff9a00;
+  --dark-space: #0a0a20;
+  --deep-space: #050518;
+  --sport-red: #d10a30;
+  --sport-blue: #1a3a8f;
+  --cyber-green: #00ff9d;
+  --future-purple: #9d00ff;
+  --chinese-font: 'jf-openhuninn', 'Exo', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--chinese-font);
+  line-height: 1.6;
+  color: #fff;
+  background: var(--deep-space);
+  background-image: 
+    radial-gradient(circle at 25% 10%, rgba(0, 50, 150, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 75% 90%, rgba(150, 0, 50, 0.3) 0%, transparent 50%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400' viewBox='0 0 800 800'%3E%3Cg fill='none' stroke='%23102040' stroke-width='1'%3E%3Cpath d='M769 229L1037 260.9M927 880L731 737 520 660 309 538 40 599 295 764 126.5 879.5 40 599-197 493 102 382-31 229 126.5 79.5-69-63'/%3E%3Cpath d='M-31 229L237 261 390 382 603 493 308.5 537.5 101.5 381.5M370 905L295 764'/%3E%3Cpath d='M520 660L578 842 731 737 840 599 603 493 520 660 295 764 309 538 390 382 539 269 769 229 577.5 41.5 370 105 295 -36 126.5 79.5 237 261 102 382 40 599 -69 737 127 880'/%3E%3Cpath d='M520-140L578.5 42.5 731-63M603 493L539 269 237 261 370 105M902 382L539 269M390 382L102 382'/%3E%3Cpath d='M-222 42L126.5 79.5 370 105 539 269 577.5 41.5 927 80 769 229 902 382 603 493 731 737M295-36L577.5 41.5M578 842L295 764M40-201L127 80M102 382L-261 269'/%3E%3C/g%3E%3Cg fill='%23102040'%3E%3Ccircle cx='769' cy='229' r='5'/%3E%3Ccircle cx='539' cy='269' r='5'/%3E%3Ccircle cx='603' cy='493' r='5'/%3E%3Ccircle cx='731' cy='737' r='5'/%3E%3Ccircle cx='520' cy='660' r='5'/%3E%3Ccircle cx='309' cy='538' r='5'/%3E%3Ccircle cx='295' cy='764' r='5'/%3E%3Ccircle cx='40' cy='599' r='5'/%3E%3Ccircle cx='102' cy='382' r='5'/%3E%3Ccircle cx='127' cy='80' r='5'/%3E%3Ccircle cx='370' cy='105' r='5'/%3E%3Ccircle cx='578' cy='42' r='5'/%3E%3Ccircle cx='237' cy='261' r='5'/%3E%3Ccircle cx='390' cy='382' r='5'/%3E%3C/g%3E%3C/svg%3E");
+  background-attachment: fixed;
+  overflow-x: hidden;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 100%);
+  z-index: -1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* 籃球元素裝飾 */
+.basketball-icon {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%23ff6b00' stroke='%23333' stroke-width='2'/%3E%3Cpath d='M 50,5 A 45,45 0 0,1 95,50 M 5,50 A 45,45 0 0,1 50,5' stroke='%23333' stroke-width='2' fill='none'/%3E%3Cpath d='M 50,95 A 45,45 0 0,1 5,50 M 95,50 A 45,45 0 0,1 50,95' stroke='%23333' stroke-width='2' fill='none'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 頭部樣式 */
+header {
+  background: linear-gradient(90deg, var(--sport-red), var(--sport-blue));
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5), 
+              0 0 40px rgba(0, 247, 255, 0.2),
+              inset 0 0 10px rgba(255, 255, 255, 0.2);
+  border-bottom: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: -1;
+}
+
+header h1 {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+  font-size: 3.5rem;
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  text-shadow: 
+    0 0 10px rgba(0, 247, 255, 0.7),
+    0 0 20px rgba(0, 247, 255, 0.5),
+    0 0 30px rgba(0, 247, 255, 0.3),
+    0 0 40px rgba(0, 247, 255, 0.1);
+  text-transform: uppercase;
+  position: relative;
+  font-weight: 700;
+}
+
+.english-title {
+  display: block;
+  font-size: 0.6em;
+  opacity: 0.8;
+  letter-spacing: 2px;
+  text-shadow: none;
+  font-family: 'Quantico', sans-serif;
+  font-weight: 400;
+}
+
+/* 導航欄樣式 */
+nav {
+  margin-top: 15px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  padding: 5px 15px;
+  position: relative;
+  display: block;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 1px;
+}
+
+nav ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-red));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+nav ul li a:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav-en {
+  display: block;
+  font-size: 0.6em;
+  opacity: 0.7;
+  text-transform: none;
+}
+
+/* 部分樣式 */
+section {
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 10, 32, 0.5);
+  z-index: -1;
+}
+
+section h2 {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  text-align: center;
+  position: relative;
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 247, 255, 0.7);
+  letter-spacing: 2px;
+}
+
+section h2::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 4px;
+  margin: 15px auto;
+  background: linear-gradient(90deg, var(--neon-orange), var(--neon-red));
+  border-radius: 2px;
+  box-shadow: 0 0 10px rgba(255, 0, 60, 0.7);
+}
+
+.english-subtitle {
+  display: block;
+  font-size: 0.5em;
+  opacity: 0.7;
+  font-family: 'Quantico', sans-serif;
+  letter-spacing: 1px;
+  margin-top: 5px;
+}
+
+section h3 {
+  color: var(--neon-blue);
+  font-size: 2rem;
+  margin: 30px 0 15px;
+  font-family: 'Exo', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-left: 4px solid var(--neon-blue);
+  padding-left: 15px;
+  font-weight: 700;
+}
+
+section h4 {
+  color: var(--neon-orange);
+  font-size: 1.7rem;
+  margin: 20px 0 10px;
+  font-family: 'Exo', sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* 首頁樣式 */
+.intro-text, .intro-text-en {
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin: 0 auto 15px;
+  text-align: center;
+  font-family: var(--chinese-font);
+}
+
+.intro-text-en {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1.2rem;
+  font-family: 'Quantico', sans-serif;
+}
+
+.hero-image {
+  max-width: 100%;
+  margin: 40px auto;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 247, 255, 0.3);
+  position: relative;
+  border: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.hero-image:hover img {
+  transform: scale(1.05);
+}
+
+/* 有趣事實框 */
+.fun-fact-box {
+  background: linear-gradient(135deg, rgba(0, 20, 60, 0.8), rgba(0, 40, 80, 0.8));
+  border: 2px solid var(--neon-orange);
+  border-radius: 10px;
+  padding: 25px;
+  margin: 40px auto;
+  max-width: 800px;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+              0 0 15px rgba(255, 154, 0, 0.3);
+}
+
+.fun-fact-box::before {
+  content: "🏀";
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background-color: var(--neon-orange);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 0 15px rgba(255, 154, 0, 0.5);
+}
+
+.english-text {
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 8px;
+}
+
+/* 球員信息 */
+.player-info {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+  background: rgba(10, 10, 32, 0.7);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4),
+              0 0 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.player-info::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(circle at bottom right, rgba(255, 0, 60, 0.1) 0%, transparent 70%);
+  opacity: 1;
+  z-index: -1;
+}
+
+.player-image {
+  flex: 1;
+  min-width: 280px;
+  position: relative;
+}
+
+.jersey-number {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: var(--sport-red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 2rem;
+  font-family: 'Orbitron', cursive;
+  box-shadow: 0 0 20px rgba(209, 10, 48, 0.6);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  z-index: 5;
+}
+
+.player-image img {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+}
+
+.player-image img:hover {
+  transform: scale(1.03) translateY(-10px);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+}
+
+.player-text {
+  flex: 2;
+  min-width: 280px;
+}
+
+.player-text p {
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  line-height: 1.5;
+}
+
+/* 雙語列表 */
+.bilingual-list {
+  margin-left: 0;
+  list-style: none;
+}
+
+.bilingual-list li {
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  position: relative;
+  padding-left: 30px;
+  transition: all 0.3s ease;
+}
+
+.bilingual-list li:last-child {
+  border-bottom: none;
+}
+
+.bilingual-list li::before {
+  content: "🏀";
+  position: absolute;
+  left: 0;
+  top: 2px;
+}
+
+.bilingual-list li:hover {
+  background-color: rgba(26, 58, 143, 0.2);
+  padding-left: 35px;
+}
+
+.bilingual-list .chinese {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: var(--chinese-font);
+}
+
+.bilingual-list .english {
+  display: block;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  font-size: 1rem;
+  font-family: 'Quantico', sans-serif;
+}
+
+/* 酷知識 */
+.fun-facts {
+  background: linear-gradient(135deg, rgba(0, 20, 40, 0.7), rgba(26, 58, 143, 0.3));
+  border-radius: 10px;
+  padding: 20px 25px;
+  margin: 30px 0;
+  border-left: 5px solid var(--neon-blue);
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 關於我 */
+.about-me {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  background: rgba(10, 10, 32, 0.7);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.my-photo {
+  flex: 1;
+  min-width: 280px;
+  text-align: center;
+}
+
+.my-photo img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s ease;
+}
+
+.my-photo img:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.my-info {
+  flex: 2;
+  min-width: 280px;
+}
+
+.about-list {
+  margin-left: 0;
+}
+
+.about-list li {
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+  padding-left: 0;
+}
+
+.about-list li::before {
+  display: none;
+}
+
+.contact {
+  margin-top: 30px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(0, 20, 40, 0.8), rgba(26, 58, 143, 0.4));
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 247, 255, 0.2);
+}
+
+/* 互動籃球 */
+.interactive-basketball {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 70px;
+  height: 70px;
+  z-index: 90;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 154, 0, 0.7));
+}
+
+.interactive-basketball img {
+  width: 100%;
+  height: auto;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* 頁腳 */
+footer {
+  background: linear-gradient(90deg, var(--deep-space), var(--dark-space));
+  padding: 40px 0;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  opacity: 0.5;
+  z-index: -1;
+}
+
+.chinese-footer {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: var(--chinese-font);
+}
+
+.english-footer {
+  font-size: 1.1rem;
+  opacity: 0.7;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Quantico', sans-serif;
+}
+
+/* 籃球場元素 */
+.court-lines {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-image: linear-gradient(90deg, transparent 49.5%, rgba(255, 255, 255, 0.1) 49.5%, rgba(255, 255, 255, 0.1) 50.5%, transparent 50.5%);
+  background-size: 100px 100%;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+/* 籃球場背景元素 - 添加到不同區域 */
+.court-element {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 4px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.court-circle-1 {
+  top: 10%;
+  right: -100px;
+}
+
+.court-circle-2 {
+  bottom: 20%;
+  left: -100px;
+}
+
+.court-key {
+  position: absolute;
+  width: 200px;
+  height: 300px;
+  border: 4px solid rgba(255, 255, 255, 0.05);
+  border-bottom: none;
+  border-radius: 100px 100px 0 0;
+  right: -100px;
+  top: 30%;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+  
+  nav ul li {
+    margin: 5px;
+  }
+  
+  nav ul li a {
+    font-size: 1.2rem;
+    padding: 5px 10px;
+  }
+  
+  section h2 {
+    font-size: 2.5rem;
+  }
+  
+  section h3 {
+    font-size: 1.8rem;
+  }
+  
+  .player-info, .about-me {
+    padding: 20px;
+  }
+  
+  .jersey-number {
+    width: 50px;
+    height: 50px;
+    font-size: 1.7rem;
+  }
+  
+  .interactive-basketball {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    right: 20px;
+  }
+} 
+
+/* 新增 AI 特效元素 */
+.ai-highlight {
+  position: relative;
+  display: inline-block;
+}
+
+.ai-highlight::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyber-green), var(--neon-blue));
+  animation: ai-scan 2s infinite;
+}
+
+@keyframes ai-scan {
+  0% {
+    transform: scaleX(0);
+    opacity: 0;
+    transform-origin: left;
+  }
+  50% {
+    transform: scaleX(1);
+    opacity: 1;
+    transform-origin: left;
+  }
+  51% {
+    transform-origin: right;
+  }
+  100% {
+    transform: scaleX(0);
+    opacity: 0;
+    transform-origin: right;
+  }
+} 
+
+/* 注音樣式設定 */
+ruby {
+  display: inline-flex;
+  flex-direction: column-reverse;
+  line-height: 1.2;
+  text-align: center;
+}
+
+rt {
+  font-size: 0.6em;
+  color: var(--neon-blue);
+  line-height: 1.2;
+  text-align: center;
+  font-weight: normal;
+  text-shadow: 0 0 5px rgba(0, 247, 255, 0.5);
+}
+
+/* 特殊文字的注音樣式 */
+.keyword ruby rt {
+  color: var(--cyber-green);
+  font-weight: bold;
+}
+
+.fun-fact-box ruby rt {
+  color: var(--neon-orange);
+}
+
+/* 讓注音有個特殊效果 */
+.glow-ruby rt {
+  animation: pulsing 2s infinite;
+}
+
+@keyframes pulsing {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
+}
+
+/* 讓注音與中文字有更好的間距 */
+ruby + ruby {
+  margin-left: 2px;
+}
+
+/* 讓連續的注音看起來更好 */
+.intro-text ruby, .chinese-footer ruby {
+  margin: 0 1px;
+}
+
+/* 中文字體樣式覆蓋 */
+.intro-text, p:not(.english-text):not(.english-footer):not(.intro-text-en), 
+.bilingual-list .chinese, h1, h2, h3, h4, 
+nav ul li a, .chinese-footer {
+  font-family: var(--chinese-font);
+}
+
+.english-text, .english-footer, .english-title, 
+.english-subtitle, .bilingual-list .english, 
+.nav-en, .intro-text-en {
+  font-family: 'Quantico', sans-serif;
+} 

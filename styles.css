@@ -1,0 +1,481 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f0f8ff;
+    color: #333;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 標題和導航 */
+header {
+    background: linear-gradient(135deg, #ff6b6b, #5758BB);
+    color: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+.english-title, .english-subtitle {
+    display: block;
+    font-size: 0.7em;
+    opacity: 0.9;
+    margin-top: 5px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    padding: 8px 15px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: block;
+    text-align: center;
+}
+
+.nav-en {
+    display: block;
+    font-size: 0.7em;
+    margin-top: 2px;
+}
+
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* 部分樣式 */
+section {
+    padding: 40px 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+section:nth-child(odd) {
+    background-color: #fff;
+}
+
+section h2 {
+    color: #ff6b6b;
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    text-align: center;
+    position: relative;
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+section h2:after {
+    content: '';
+    display: block;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(to right, #ff6b6b, #5758BB);
+    margin: 10px auto;
+    border-radius: 2px;
+}
+
+section h3 {
+    color: #5758BB;
+    font-size: 1.5rem;
+    margin: 20px 0 10px;
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+section h4 {
+    color: #ff9a3c;
+    font-size: 1.3rem;
+    margin: 15px 0 10px;
+    font-family: 'Bubblegum Sans', cursive;
+}
+
+/* 首頁 */
+#home {
+    text-align: center;
+}
+
+.intro-text, .intro-text-en {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 15px;
+}
+
+.intro-text-en {
+    color: #666;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+.hero-image {
+    max-width: 100%;
+    margin: 20px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-image:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hero-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.fun-fact-box {
+    background-color: #FFEDE1;
+    border: 3px dashed #ff9a3c;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 800px;
+    text-align: left;
+    box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+.fun-fact-box:before {
+    content: "!";
+    position: absolute;
+    top: -15px;
+    left: 20px;
+    background-color: #ff9a3c;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.english-text {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+/* 球員信息 */
+.player-info {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.player-image {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    position: relative;
+}
+
+.jersey-number {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #ff6b6b;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.player-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    border: 5px solid white;
+}
+
+.player-image img:hover {
+    transform: scale(1.05) rotate(2deg);
+}
+
+.player-text {
+    flex: 2;
+    min-width: 300px;
+}
+
+.player-text p {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.bilingual-list {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.bilingual-list li {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.bilingual-list .chinese {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+.bilingual-list .english {
+    display: block;
+    color: #666;
+    font-style: italic;
+    font-size: 0.9em;
+}
+
+.fun-facts {
+    background-color: #E1F5FE;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 20px 0;
+    border-left: 5px solid #29B6F6;
+}
+
+/* 影片容器 */
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 比例 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 關於我 */
+.about-me {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: center;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.my-photo {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+}
+
+.my-photo img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border: 8px solid white;
+    transition: transform 0.3s ease;
+}
+
+.my-photo img:hover {
+    transform: scale(1.05) rotate(3deg);
+}
+
+.my-info {
+    flex: 2;
+    min-width: 300px;
+}
+
+.about-list {
+    list-style: none;
+}
+
+.about-list li {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.about-list li:last-child {
+    border-bottom: none;
+}
+
+.contact {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    text-align: center;
+}
+
+/* 互動籃球 */
+.interactive-basketball {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    z-index: 90;
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.interactive-basketball img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+/* 動畫盒子 */
+.animated-box {
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* 頁腳 */
+footer {
+    background: linear-gradient(135deg, #5758BB, #4ecdc4);
+    color: #fff;
+    padding: 30px 0;
+    text-align: center;
+}
+
+.chinese-footer {
+    margin-bottom: 10px;
+}
+
+.english-footer {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+    
+    nav ul li {
+        margin: 5px;
+    }
+    
+    section {
+        padding: 30px 0;
+    }
+    
+    section h2 {
+        font-size: 1.8rem;
+    }
+    
+    .player-info, .about-me {
+        flex-direction: column;
+    }
+    
+    .player-image, .my-photo {
+        margin-bottom: 20px;
+    }
+    
+    .jersey-number {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+
+/* 淡入動畫 */
+.player-info, .about-me {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade-in {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+} 
