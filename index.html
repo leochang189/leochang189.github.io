@@ -517,6 +517,31 @@
             font-weight: bold;
             font-family: 'Orbitron', sans-serif;
         }
+
+        /* 管理員刪除按鈕樣式 */
+        .delete-btn {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff4444;
+            border: 1px solid #ff4444;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-left: 10px;
+            transition: all 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 0, 0, 0.3);
+        }
+
+        .admin-controls {
+            display: none;
+        }
+
+        body.admin .admin-controls {
+            display: inline-block;
+        }
     </style>
 </head>
 <body class="chinese">
@@ -1761,21 +1786,12 @@
             <!-- 留言表單 -->
             <div class="guestbook-form">
                 <form id="comment-form">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">
-                                <span class="chinese"><ruby>姓<rt>ㄒㄧㄥˋ</rt></ruby><ruby>名<rt>ㄇㄧㄥˊ</rt></ruby></span>
-                                <span class="english">Name</span>
-                            </label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">
-                                <span class="chinese"><ruby>電<rt>ㄉㄧㄢˋ</rt></ruby><ruby>子<rt>ㄗˇ</rt></ruby><ruby>郵<rt>ㄧㄡˊ</rt></ruby><ruby>件<rt>ㄐㄧㄢˋ</rt></ruby></span>
-                                <span class="english">Email</span>
-                            </label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
+                    <div class="form-group">
+                        <label for="name">
+                            <span class="chinese"><ruby>姓<rt>ㄒㄧㄥˋ</rt></ruby><ruby>名<rt>ㄇㄧㄥˊ</rt></ruby></span>
+                            <span class="english">Name</span>
+                        </label>
+                        <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
                         <label for="message">
@@ -1798,7 +1814,7 @@
                     <span class="english">Recent Comments</span>
                 </h3>
                 <div id="comments-list">
-                    <!-- 示例留言已清空 -->
+                    <!-- 留言將在這裡顯示 -->
                 </div>
             </div>
         </div>
@@ -1852,19 +1868,11 @@
                     
                     // 獲取表單數據
                     const name = document.getElementById('name').value.trim();
-                    const email = document.getElementById('email').value.trim();
                     const message = document.getElementById('message').value.trim();
                     
                     // 驗證表單
-                    if (!name || !email || !message) {
-                        alert('請填寫所有必填欄位');
-                        return;
-                    }
-                    
-                    // 驗證郵箱格式
-                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                    if (!emailRegex.test(email)) {
-                        alert('請輸入有效的電子郵件地址');
+                    if (!name || !message) {
+                        alert('請填寫姓名和留言內容');
                         return;
                     }
                     
@@ -1887,11 +1895,13 @@
             
             // 創建留言元素函數
             function createCommentElement(author, content) {
-                // 獲取當前日期
+                // 獲取當前日期和時間
                 const now = new Date();
                 const dateStr = now.getFullYear() + '-' + 
                                String(now.getMonth() + 1).padStart(2, '0') + '-' + 
                                String(now.getDate()).padStart(2, '0');
+                const timeStr = String(now.getHours()).padStart(2, '0') + ':' + 
+                               String(now.getMinutes()).padStart(2, '0');
                 
                 // 創建留言容器
                 const commentItem = document.createElement('div');
@@ -1921,10 +1931,13 @@
                 authorSpan.innerHTML = authorHTML;
                 authorElement.appendChild(authorSpan);
                 
-                // 創建日期元素
+                // 創建日期和時間元素
                 const dateElement = document.createElement('span');
                 dateElement.className = 'comment-date';
-                dateElement.textContent = dateStr;
+                dateElement.innerHTML = `
+                    <span class="chinese">${dateStr} ${timeStr}</span>
+                    <span class="english">${dateStr} ${timeStr}</span>
+                `;
                 
                 // 添加頭部元素
                 commentHeader.appendChild(authorElement);
@@ -1960,10 +1973,16 @@
             // 保存留言到localStorage
             function saveComment(author, content) {
                 const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+                const now = new Date();
                 const newComment = {
                     author,
                     content,
-                    date: new Date().toISOString()
+                    date: now.toISOString(),
+                    dateStr: now.getFullYear() + '-' + 
+                            String(now.getMonth() + 1).padStart(2, '0') + '-' + 
+                            String(now.getDate()).padStart(2, '0'),
+                    timeStr: String(now.getHours()).padStart(2, '0') + ':' + 
+                            String(now.getMinutes()).padStart(2, '0')
                 };
                 comments.unshift(newComment);
                 // 只保留最新的20條留言
@@ -2017,8 +2036,8 @@
 
         // 訪客計數功能
         document.addEventListener('DOMContentLoaded', function() {
-            // 獲取當前訪客數
-            let visitorCount = parseInt(localStorage.getItem('visitorCount') || '0');
+            // 獲取當前訪客數，如果沒有則設置為88
+            let visitorCount = parseInt(localStorage.getItem('visitorCount') || '88');
             
             // 每次訪問都增加計數
             visitorCount++;
